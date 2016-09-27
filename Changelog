@@ -1,6 +1,15 @@
 Changes
 =======
 
+.. _version-1.1.0:
+
+1.1.0
+=====
+:release-date: 2016-09-27 11:24 A.M PDT
+:release-by: Ask Solem
+
+- Support for Python 3 (3.4, 3.5)
+
 .. _version-1.0.0:
 
 1.0.0
