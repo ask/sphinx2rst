@@ -42,7 +42,7 @@ else:
 
 setup(
     name='sphinx2rst',
-    version='1.0.0',
+    version='1.1.0',
     description='Convert Sphinx to rst',
     author='Ask Solem',
     author_email='ask@celeryproject.org',
