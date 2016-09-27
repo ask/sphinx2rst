@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
@@ -40,6 +40,7 @@ except ImportError:
     REFBASE = ''  # noqa
     REFS = ''     # noqa
 
+
 pending_refs = {}
 
 
@@ -70,7 +71,7 @@ def asciify(lines):
             new_line = ''.join([
                 new_line.rstrip(), new_line[0] * prev_diff, '\n'])
         prev_diff = len(new_line) - len(line)
-        yield new_line.encode('ascii')
+        yield new_line.encode('ascii').decode()
 
 
 def replace_code_block(lines, pos, match):
@@ -87,7 +88,7 @@ def replace_code_block(lines, pos, match):
     if lines[prev_line_with_text].endswith(':'):
         lines[prev_line_with_text] += ':'
     else:
-        lines[prev_line_with_text] += match.group(1) + '::'
+        lines[prev_line_with_text] += '\n' + match.group(1) + '::'
 
 
 def remove_line(lines, i, match):
@@ -173,7 +174,7 @@ def main(argv=sys.argv):
     dirname[0] = os.path.dirname(sys.argv[1])
     encoding = 'ascii' if '--ascii' in sys.argv else 'utf-8'
     with codecs.open(sys.argv[1], encoding='utf-8') as fh:
-        print(sphinx_to_rst(fh, encoding).encode('utf-8'))
+        print(sphinx_to_rst(fh, encoding).encode('utf-8').decode())
 
 
 if __name__ == '__main__':
